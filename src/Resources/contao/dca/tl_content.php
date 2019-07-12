@@ -15,7 +15,7 @@ use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\DataContainer;
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['cp_animation'] = array(
-    'label'                   => &$GLOBALS['TL_LANG']['tl_metten_content']['cp_animation'],
+    'label'                   => &$GLOBALS['TL_LANG']['tl_quicktransition']['cp_animation'],
     'exclude'                 => true,
     'default'                 => true,
     'inputType'               => 'checkbox',

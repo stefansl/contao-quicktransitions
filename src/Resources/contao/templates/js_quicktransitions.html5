@@ -1,0 +1,8 @@
+<?php
+
+// Add the quicktransitions style sheet
+$GLOBALS['TL_CSS'][] = 'bundles/clickpresscontaoquicktransitions/quicktransitions.css';
+
+?>
+
+<script src="bundles/clickpresscontaoquicktransitions/quicktransitions.js"></script>

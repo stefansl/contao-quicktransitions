@@ -2,25 +2,21 @@
     "name": "stefansl/contao-quicktransitions",
     "type": "contao-bundle",
     "description": "Fancy transitions vor content elements in Contao",
+    "homepage":"https://clickpress.de",
     "license": "LGPL-3.0-or-later",
-    "authors": [
+    "authors":[
         {
-            "name": "Leo Feyer",
-            "homepage": "https://github.com/leofeyer"
+            "name":"CLICKPRESS",
+            "homepage":"https://clickpress.de",
+            "role":"Developer"
         }
     ],
-    "require": {
-        "php": "^5.6 || ^7.0",
-        "contao/core-bundle": "4.4.*",
-        "symfony/framework-bundle": "^3.3"
-    },
-    "conflict": {
-        "contao/core": "*",
-        "contao/manager-plugin": "<2.0 || >=3.0"
+    "require":{
+        "php":">=7.1",
+        "contao/core-bundle":"^4.4"
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0",
-        "doctrine/doctrine-cache-bundle": "^1.3",
         "friendsofphp/php-cs-fixer": "^2.12",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message-factory": "^1.0.2",
@@ -41,7 +37,7 @@
         }
     },
     "support": {
-        "issues": "https://github.com/contao/skeleton-bundle/issues",
-        "source": "https://github.com/contao/skeleton-bundle"
+        "issues": "https://github.com/stefansl/contao-quicktransitions/issues",
+        "source": "https://github.com/stefansl/contao-quicktransitions"
     }
 }

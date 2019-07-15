@@ -5,4 +5,4 @@ $GLOBALS['TL_CSS'][] = 'bundles/clickpresscontaoquicktransitions/quicktransition
 
 ?>
 
-<script src="bundles/clickpresscontaoquicktransitions/quicktransitions.js"></script>
+<script src="bundles/clickpresscontaoquicktransitions/quicktransitions.min.js"></script>

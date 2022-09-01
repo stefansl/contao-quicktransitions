@@ -1,0 +1,4 @@
+services:
+    Clickpress\ContaoQuicktransitions\EventListener\GetContentElementListener:
+        autowire: true
+        autoconfigure: true

@@ -14,14 +14,13 @@
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\DataContainer;
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['cp_animation'] = array(
-    'label'                   => &$GLOBALS['TL_LANG']['tl_quicktransition']['cp_animation'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['cp_animation'] = [
     'exclude'                 => true,
     'default'                 => true,
     'inputType'               => 'checkbox',
-    'eval'                    => array('tl_class'=>'w50 m12'),
+    'eval'                    => ['tl_class'=>'w50 m12'],
     'sql'                     => "char(1) NOT NULL default ''"
-);
+];
 
 /**
  * Palettes

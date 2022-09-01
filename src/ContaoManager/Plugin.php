@@ -10,7 +10,7 @@
 
 namespace Clickpress\ContaoQuicktransitions\ContaoManager;
 
-use Clickpress\ContaoQuicktransitions\ClickpressContaoQuicktransitionsBundle;
+use Clickpress\ContaoQuicktransitions\ContaoQuicktransitionsBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
@@ -24,7 +24,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(ClickpressContaoQuicktransitionsBundle::class)
+            BundleConfig::create(ContaoQuicktransitionsBundle::class)
                 ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }

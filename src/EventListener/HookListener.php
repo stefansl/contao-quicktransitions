@@ -10,38 +10,41 @@
 
 namespace Clickpress\ContaoQuicktransitions\EventListener;
 
+use Contao\ContentElement;
 use Contao\ContentModel;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
+use Contao\CoreBundle\Routing\ScopeMatcher;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class HookListener
 {
-    /**
-     * Inject animation attributes.
-     *
-     * @param ContentModel $objElement
-     * @param string       $strBuffer
-     *
-     * @return string
-     */
-    public function onGetContentElement(ContentModel $objElement, string $strBuffer): string
+    private $requestStack;
+    private $scopeMatcher;
+
+    public function __construct(RequestStack $requestStack, ScopeMatcher $scopeMatcher)
     {
-        //dump($objElement);
-        if (TL_MODE === 'BE' || !$objElement->cp_animation) {
-            return $strBuffer;
+        $this->requestStack = $requestStack;
+        $this->scopeMatcher = $scopeMatcher;
+    }
+
+    #[AsHook('onGetContentElement', priority: 100)]
+    public function onGetContentElement(ContentModel $contentModel, string $buffer): string
+    {
+        if ($this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest()) || !$contentModel->cp_animation) {
+            return $buffer;
         }
 
-        $strBuffer = \preg_replace_callback(
+        $buffer = \preg_replace_callback(
             '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
-            function ($matches) {
+            static function ($matches) {
                 $strTag = $matches[1];
                 $strAttributes = $matches[2];
 
-                $strAnimAttr = '<'.$strTag.' data-animation="fade" '.$strAttributes.'>';
-
-                return $strAnimAttr;
+                return '<'.$strTag.' data-animation="fade" '.$strAttributes.'>';
             },
-            $strBuffer, 1
+            $buffer, 1
         );
 
-        return $strBuffer;
+        return $buffer;
     }
 }

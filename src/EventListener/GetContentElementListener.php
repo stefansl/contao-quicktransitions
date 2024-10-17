@@ -10,17 +10,18 @@
 
 namespace Clickpress\ContaoQuicktransitions\EventListener;
 
-use Contao\ContentElement;
 use Contao\ContentModel;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+use function preg_replace_callback;
+
 #[AsHook('getContentElement')]
 class GetContentElementListener
 {
-    private $requestStack;
-    private $scopeMatcher;
+    private RequestStack $requestStack;
+    private ScopeMatcher $scopeMatcher;
 
     public function __construct(RequestStack $requestStack, ScopeMatcher $scopeMatcher)
     {
@@ -31,22 +32,22 @@ class GetContentElementListener
 
     public function __invoke(ContentModel $contentModel, string $buffer, $element): string
     {
-
-        if ($this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest()) || !$contentModel->cp_animation) {
+        if (!$contentModel->cp_animation || $this->scopeMatcher->isBackendRequest(
+            $this->requestStack->getCurrentRequest()
+        )) {
             return $buffer;
         }
 
-        $buffer = \preg_replace_callback(
+        return preg_replace_callback(
             '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
             static function ($matches) {
                 $strTag = $matches[1];
                 $strAttributes = $matches[2];
 
-                return '<'.$strTag.' data-animation="fade" '.$strAttributes.'>';
+                return '<' . $strTag . ' data-animation="fade" ' . $strAttributes . '>';
             },
-            $buffer, 1
+            $buffer,
+            1
         );
-
-        return $buffer;
     }
 }

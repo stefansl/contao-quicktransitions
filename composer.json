@@ -12,15 +12,11 @@
         }
     ],
     "require":{
-        "contao/core-bundle": "^4.13 || ^5.1"
+        "contao/core-bundle": "^^5.3"
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0",
-        "friendsofphp/php-cs-fixer": "^2.12",
-        "php-http/guzzle6-adapter": "^1.1",
-        "php-http/message-factory": "^1.0.2",
-        "phpunit/phpunit": "^5.7.26",
-        "symfony/phpunit-bridge": "^3.2"
+        "friendsofphp/php-cs-fixer": "^2.12"
     },
     "extra": {
         "contao-manager-plugin": "Clickpress\\ContaoQuicktransitions\\ContaoManager\\Plugin"
@@ -28,11 +24,6 @@
     "autoload": {
         "psr-4": {
             "Clickpress\\ContaoQuicktransitions\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Clickpress\\ContaoQuicktransitions\\Tests\\": "tests/"
         }
     },
     "support": {

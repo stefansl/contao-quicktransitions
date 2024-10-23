@@ -14,6 +14,7 @@
         var elAnimation = document.querySelectorAll('[data-animation]'),
             countContainer = elAnimation.length
 
+        if (elAnimation.length === 0) return;
         var animateInViewport = function() {
             for (var i = 0; i < countContainer; ++i) {
                 const pos = elAnimation[i].getBoundingClientRect(),

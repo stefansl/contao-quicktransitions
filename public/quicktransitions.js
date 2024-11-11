@@ -4,19 +4,20 @@
  * @author: Stefan Schulz-Lauterbach <ssl@clickpress.de>
  */
 
-(function() {
+(function () {
     'use strict'
-    if (window.innerWidth >= 768)
-    {
-        var intFrameHeight = window.innerHeight
 
-        // Animations
-        var elAnimation = document.querySelectorAll('[data-animation]'),
-            countContainer = elAnimation.length
+    const intFrameHeight = window.innerHeight
 
-        if (elAnimation.length === 0) return;
-        var animateInViewport = function() {
-            for (var i = 0; i < countContainer; ++i) {
+    // Animations
+    const elAnimation = document.querySelectorAll('[data-animation]'),
+        countContainer = elAnimation.length
+
+    if (elAnimation.length === 0) return;
+
+    if (window.innerWidth >= 768) {
+        const animateInViewport = function () {
+            for (let i = 0; i < countContainer; ++i) {
                 const pos = elAnimation[i].getBoundingClientRect(),
                     rounded = Math.round(pos.top) - 100
 
@@ -25,28 +26,28 @@
                 }
             }
         }
-
-        var startAnimation = function() {
+        const startAnimation = function () {
             animateInViewport()
         }
 
         // Initial fade in anim on load
         animateInViewport()
+
+        window.addEventListener("resize", function () {
+            requestAnimationFrame(startAnimation)
+        }, {
+            capture: true,
+            passive: true
+        })
+
+        window.addEventListener("scroll", function () {
+            requestAnimationFrame(startAnimation)
+        }, {
+            capture: true,
+            passive: true
+        })
     }
 
-    window.addEventListener("resize", function() {
-        requestAnimationFrame(startAnimation)
-    }, {
-        capture: true,
-        passive: true
-    })
-
-    window.addEventListener("scroll", function() {
-        requestAnimationFrame(startAnimation)
-    }, {
-        capture: true,
-        passive: true
-    })
 
 }())
 

@@ -42,7 +42,7 @@ class GetContentElementListener
             '|<([a-zA-Z0-9]+)(\s[^>]*?)?(?<!/)>|',
             static function ($matches) {
                 $strTag = $matches[1];
-                $strAttributes = $matches[2];
+                $strAttributes = $matches[2] ?? null;
 
                 return '<' . $strTag . ' data-animation="fade" ' . $strAttributes . '>';
             },

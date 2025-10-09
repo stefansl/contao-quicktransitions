@@ -16,6 +16,9 @@
     }, {})
 
     const elAnimation = document.querySelectorAll('[data-animation]')
+
+    if (!elAnimation) return;
+
     elAnimation.forEach(el => {
         observer.observe(el)
     })
